@@ -1,3 +1,8 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 // Copyright 2016 Palantir Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +25,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/palantir/go-ptimports/ptimports"
+	"github.com/sniperkit/snk.fork.palantir-go-ptimports/ptimports"
 )
 
 func TestPtImports(t *testing.T) {
@@ -76,7 +81,7 @@ func Foo() {
 			"Imports not refactored if refactor is false",
 			`package foo
 
-import "github.com/palantir/go-ptimports/ptimports"
+import "github.com/sniperkit/snk.fork.palantir-go-ptimports/ptimports"
 import "bytes"
 import "golang.org/x/tools/imports"
 
@@ -90,7 +95,7 @@ func Foo() {
 			nil,
 			`package foo
 
-import "github.com/palantir/go-ptimports/ptimports"
+import "github.com/sniperkit/snk.fork.palantir-go-ptimports/ptimports"
 import "bytes"
 import "golang.org/x/tools/imports"
 
@@ -105,7 +110,7 @@ func Foo() {
 			"Refactors and groups imports based on builtin and external if refactor is true",
 			`package foo
 
-import "github.com/palantir/go-ptimports/ptimports"
+import "github.com/sniperkit/snk.fork.palantir-go-ptimports/ptimports"
 import "bytes"
 import "golang.org/x/tools/imports"
 
@@ -123,7 +128,7 @@ func Foo() {
 import (
 	"bytes"
 
-	"github.com/palantir/go-ptimports/ptimports"
+	"github.com/sniperkit/snk.fork.palantir-go-ptimports/ptimports"
 	"golang.org/x/tools/imports"
 )
 
@@ -178,15 +183,15 @@ func Foo() {
 			"Groups imports based on builtin, external, and project-local",
 			`package foo
 
-import _ "github.com/palantir/go-ptimports"
-import _ "github.com/palantir/go-ptimports/ptimports"
+import _ "github.com/sniperkit/snk.fork.palantir-go-ptimports"
+import _ "github.com/sniperkit/snk.fork.palantir-go-ptimports/ptimports"
 import _ "bytes"
 import _ "golang.org/x/tools/imports"
 `,
 			&ptimports.Options{
 				Refactor: true,
 				LocalPrefixes: []string{
-					"github.com/palantir/go-ptimports/",
+					"github.com/sniperkit/snk.fork.palantir-go-ptimports/",
 				},
 			},
 			`package foo
@@ -196,8 +201,8 @@ import (
 
 	_ "golang.org/x/tools/imports"
 
-	_ "github.com/palantir/go-ptimports"
-	_ "github.com/palantir/go-ptimports/ptimports"
+	_ "github.com/sniperkit/snk.fork.palantir-go-ptimports"
+	_ "github.com/sniperkit/snk.fork.palantir-go-ptimports/ptimports"
 )
 `,
 		},

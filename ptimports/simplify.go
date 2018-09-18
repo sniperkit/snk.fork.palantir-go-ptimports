@@ -1,3 +1,8 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 // Code from cmd/gofmt/simplify.go and cmd/gofmt/rewrite.go, which bears the following license:
 //
 // Copyright 2010 The Go Authors. All rights reserved.
